@@ -28,5 +28,7 @@ jobs:
         ECR_REPOSITORY: k8repo
         IMAGE_TAG: phpGuestbook_1
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 867152996688.dkr.ecr.us-east-1.amazonaws.com
+        
+        docker build -t k8repo 
+        docker tag k8repo:latest 867152996688.dkr.ecr.us-east-1.amazonaws.com/k8repo:latest
