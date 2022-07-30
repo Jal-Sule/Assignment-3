@@ -8,7 +8,7 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* 
   
-COPY ./install-composer.sh 
+COPY ./install-composer.sh .
 RUN chmod +x ./install-composer.sh \
   && ./install-composer.sh \
   && mv composer.phar /usr/local/bin/composer
